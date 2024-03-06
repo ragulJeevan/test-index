@@ -1,0 +1,31 @@
+<div>
+    <!-- Display items -->
+    <ul>
+      <li *ngFor="let item of items">
+        {{ item.name }} - {{ item.description }}
+        <button (click)="selectItem(item)">Edit</button>
+        <button (click)="deleteItem(item.id)">Delete</button>
+      </li>
+    </ul>
+  </div>
+  
+  <div>
+    <!-- Add new item form -->
+    <h3>Add New Item</h3>
+    <form (submit)="addItem()">
+      <input type="text" [(ngModel)]="newItem.name" placeholder="Name">
+      <input type="text" [(ngModel)]="newItem.description" placeholder="Description">
+      <button type="submit">Add Item</button>
+    </form>
+  </div>
+  
+  <div *ngIf="selectedItem.id">
+    <!-- Edit item form -->
+    <h3>Edit Item</h3>
+    <form (submit)="updateItem()">
+      <input type="text" [(ngModel)]="selectedItem.name" placeholder="Name">
+      <input type="text" [(ngModel)]="selectedItem.description" placeholder="Description">
+      <button type="submit">Update Item</button>
+    </form>
+  </div>
+  
